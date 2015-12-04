@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    	<a href="/#/checkout"><button type="button" class="btn btn-primary" style="float:right;">Checkout</button></a>
+    	<table st-table="displayed" st-safe-src="cartItems" class="table table-striped">
+			<thead>
+			<tr>
+				<th class="clickable-shop-header" st-sort="title" st-skip-natural="true" st-sort-default='true'>Title</th>
+				<th class="clickable-shop-header" st-sort="name" st-skip-natural="true" st-sort-default='true'>Lead Singer</th>
+				<th class="clickable-shop-header" st-sort="company" st-skip-natural="true" st-sort-default='true'>Company</th>
+				<th class="clickable-shop-header" st-sort="category" st-skip-natural="true">Category</th>
+				<th class="clickable-shop-header" st-sort="price" st-skip-natural="true">Price</th>
+				<th class="clickable-shop-header" st-sort="quantity" st-skip-natural="true">Quantity</th>
+				<th class="clickable-shop-header">Remove</th>
+			</tr>
+			</thead>
+			<tbody ng-show="!isLoading">
+			<tr ng-repeat="item in displayed">
+				<td>{{item.title}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.company}}</td>
+				<td>{{item.category}}</td>
+				<td>{{item.price | currency: '$' : 2}}</td>
+				<!-- ng-bind - this gets its data from the item.quantity value, and with ng-model this updates the item.quantity value 
+				this way the quantity is always in sync-->
+				<td><input type="number" ng-bind="item.quantity" ng-model="item.quantity" upc="{{item.upc}}" readonly /></td>
+				<td><button type="button" ng-click="removeItem($event, item)" class="btn btn-sm btn-danger">
+				<i class="glyphicon glyphicon-minus">
+				</i>
+				</button></td>
+			</tr>
+			</tbody>
+			<tbody ng-show="isLoading">
+				<tr>
+					<td colspan="4" class="text-center">Loading ... </td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td class="text-center" st-pagination="" st-items-by-page="10" colspan="4">
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+    </div>
+  </div>
+</div>

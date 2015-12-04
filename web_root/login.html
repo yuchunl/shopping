@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div>
+                <h4>Login</h4>
+                <form>
+                    Username:<br>
+                    <input type="text" ng-model="loginDetails.cid">
+                    <br>
+                    Password:<br>
+                    <input type="password" ng-model="loginDetails.password">
+                    <br>
+                    <button type="button" ng-click="doLogin(loginDetails)" class="btn btn-sm btn-success">Log in</button>
+                </form>
+            </div>
+
+            <br><br>
+            <div>
+                <h4>Create account</h4>
+                <form>
+                    Username:<br>
+                    <input type="text" ng-model="customerDetails.cid">
+                    <br>
+                    Password:<br>
+                    <input type="password" ng-model="customerDetails.password">
+                    <br>
+                    Name:<br>
+                    <input type="text" ng-model="customerDetails.name">
+                    <br>
+                    Address:<br>
+                    <input type="text" ng-model="customerDetails.address">
+                    <br>
+                    Phone:<br>
+                    <input type="text" ng-model="customerDetails.phone">
+                    <br>
+                    <button type="button" ng-click="addCustomer(customerDetails)" class="btn btn-sm btn-success">Create account</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

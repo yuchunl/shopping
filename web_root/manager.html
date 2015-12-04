@@ -1,0 +1,379 @@
+<div id="options" class="container">
+
+<div class="row">
+
+<!--     <div class= "col-md-3 col-md-offset-3">
+
+        <h2>Select a Transaction</h2>
+        
+        <h4>Update item stock</h4>
+        <form>
+            Item UPC Number:<br>
+            <input type="text" ng-bind="manager.upc" ng-model="manager.upc">
+            <br>
+            Quantity to Add:<br>
+            <input type="number" ng-bind="manager.quantity" ng-model="manager.quantity">
+            <br>
+            New Unit Price (Optional):<br>
+            <input type="number" step="0.01" ng-bing="manager.price" ng-model="manager.price">
+            <br><br>
+            <button type="button" ng-click="updateStock(manager)" class="btn btn-sm btn-success">Submit</button>
+        </form>
+        
+        <h4>Record Delivery of an Order</h4>
+        <form>
+            Order ReceiptID:<br>
+            <input type="text" ng-bind="manager.receiptId" ng-model="manager.receiptId">
+            <br>
+            Delivery Date:<br>
+            <input type="date" ng-bind="manager.date" ng-model="manager.date">
+            <br><br>
+            <button type="button" ng-click="updateDeliveryDate(manager)" class="btn btn-sm btn-success">Submit</button>
+        </form>
+        
+        <h4>View Daily Sales Report</h4>
+        <form>
+            Date:<br>
+            <input type="date" ng-bind="manager.reportDate" ng-model="manager.reportDate">
+            <br><br>
+            <button type="button" ng-click="viewDailySales(manager)" class="btn btn-sm btn-success">Submit</button>
+        </form>
+        
+        <h4>View Top Selling Items</h4>
+        <form>
+            Date:<br>
+            <input type="date" ng-bind="manager.statDate" ng-model="manager.statDate">
+            <br>
+            How Many Best Sellers Would You Like to View?:<br>
+            <input type="number" ng-bind="manager.n" ng-model="manager.n">
+            <br><br>
+            <button type="button" ng-click="getTopSellers(manager)" class="btn btn-sm btn-success">Submit</button>
+        </form>
+        
+    </div>
+
+    <div class="col-md-3">
+    <div class="resultsBox" id="viewResults" style="visibility:hidden;">
+            <table class="table-striped" style="" id="resultsTable">
+            </table>
+    </div> 
+    </div> -->
+    <!--     component from:
+    https://angular-ui.github.io/bootstrap/-->
+    <div class="col-md-8 col-md-offset-2">
+        <tabset>
+        <tab heading="Update Stock">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Update item stock</h4>
+                <form>
+                    Item UPC Number:<br>
+                    <input type="text" ng-bind="manager.upc" ng-model="manager.upc">
+                    <br>
+                    Quantity to Add:<br>
+                    <input type="number" ng-bind="manager.quantity" ng-model="manager.quantity">
+                    <br>
+                    New Unit Price (Optional):<br>
+                    <input type="number" step="0.01" ng-bing="manager.price" ng-model="manager.price">
+                    <br><br>
+                    <button type="button" ng-click="updateStock(manager)" class="btn btn-sm btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+        </tab>
+        <tab heading="Record Delivery">
+            <h4>Record Delivery of an Order</h4>
+            <form>
+                Order ReceiptID:<br>
+                <input type="text" ng-bind="manager.receiptId" ng-model="manager.receiptId">
+                <br>
+                Delivery Date:<br>
+                <input type="date" ng-bind="manager.date" ng-model="manager.date">
+                <br><br>
+                <button type="button" ng-click="updateDeliveryDate(manager)" class="btn btn-sm btn-success">Submit</button>
+            </form>
+        </tab>
+        <tab heading="View Sales">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>View Daily Sales Report</h4>
+                <form>
+                    Date:<br>
+                    <input type="date" ng-bind="manager.reportDate" ng-model="manager.reportDate">
+                    <br><br>
+                    <button type="button" ng-click="viewDailySales(manager)" class="btn btn-sm btn-success">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="row">
+                <table st-table="salesDisplayRock" st-safe-src="salesSourceRock" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayRock">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsRock}}</td>
+                        <td>{{totalValueRock | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayPop" st-safe-src="salesSourcePop" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayPop">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsPop}}</td>
+                        <td>{{totalValuePop | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayRap" st-safe-src="salesSourceRap" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayRap">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsRap}}</td>
+                        <td>{{totalValueRap | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayCountry" st-safe-src="salesSourceCountry" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayCountry">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsCountry}}</td>
+                        <td>{{totalValueCountry | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayClassical" st-safe-src="salesSourceClassical" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayClassical">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsClassical}}</td>
+                        <td>{{totalValueClassical | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayNewAge" st-safe-src="salesSourceNewAge" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayNewAge">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsNewAge}}</td>
+                        <td>{{totalValueNewAge | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+                <div class="row">
+                <table st-table="salesDisplayInstrumental" st-safe-src="salesSourceInstrumental" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Units</th>
+                        <th>Total Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in salesDisplayInstrumental">
+                        <td>{{item.upc}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.unitPrice | currency: '$' : 2}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnitsInstrumental}}</td>
+                        <td>{{totalValueInstrumental | currency: '$' : 2}}</td>
+                    </tr>
+                     <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>Grand Totals:</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{totalUnits}}</td>
+                        <td>{{totalValue | currency: '$' : 2}}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </div>
+            </div>
+        </div>
+        </tab>
+        <tab heading="Top Selling">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>View Top Selling Items</h4>
+                <form>
+                    Date:<br>
+                    <input type="date" ng-bind="manager.statDate" ng-model="manager.statDate">
+                    <br>
+                    How Many Best Sellers Would You Like to View?:<br>
+                    <input type="number" ng-bind="manager.n" ng-model="manager.n">
+                    <br><br>
+                    <button type="button" ng-click="getTopSellers(manager)" class="btn btn-sm btn-success">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <table st-table="topSellingDisplay" st-safe-src="topSellingSource" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>UPC</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in topSellingDisplay">
+                        <td ng-if='item.quantity > 0'>{{item.upc}}</td>
+                        <td ng-if='item.quantity > 0'>{{item.quantity}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </tab>
+        </tabset>
+    </div>
+
+
+</div>
+</div>

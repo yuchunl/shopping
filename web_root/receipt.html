@@ -1,0 +1,55 @@
+<div class="container">
+<div class="row">
+<div class="col-md-8-offset-2">
+<h2 style = "margin:auto" >Receipt</h2>
+<div class="resultsBox" id="viewResults" style="margin-top:50px" >
+    <div class="row">
+        <table style="width:600px ; margin:auto" id="resultsTable">
+        </table>
+    </div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+  <div class="row">
+    <div class="col-md-8">   	
+    	<table st-table="displayed" st-safe-src="cartItems" class="table table-striped">
+			<thead>
+			<tr>
+				<th class="clickable-shop-header" st-sort="upc" st-skip-natural="true" st-sort-default='true'>UPC</th>
+				<th class="clickable-shop-header" st-sort="title" st-skip-natural="true" st-sort-default='true'>Title</th>
+				<th class="clickable-shop-header" st-sort="price" st-skip-natural="true">Unit Price</th>
+				<th class="clickable-shop-header" st-sort="quantity" st-skip-natural="true">Quantity</th>
+				<th class="clickable-shop-header" st-sort="quantity" st-skip-natural="true">Item Total</th>
+			</tr>
+			</thead>
+			<tbody ng-show="!isLoading">
+			<tr ng-repeat="item in displayed">
+				<td>{{item.upc}}</td>
+				<td>{{item.title}}</td>
+				<td>{{item.price | currency: '$' : 2}}</td>
+				<td>{{item.quantity}}</td>
+				<td>{{item.price * item.quantity | currency: '$' : 2}}</td>
+			</tr>
+			</tbody>
+			<tbody ng-show="isLoading">
+				<tr>
+					<td colspan="4" class="text-center">Loading ... </td>
+				</tr>
+			</tbody>
+			<tfoot>
+			<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Total Price: {{totalBill | currency: '$' : 2}}</td>
+			</tr>
+			</tfoot>
+		</table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,7 @@
+ Rock
+ Pop
+ Rap
+ Country
+ Classical
+ New age
+ Instrumental

@@ -1,0 +1,50 @@
+<div id="options" class="container">
+<div class="row">   
+<div class= "col-md-4 col-md-offset-2">
+    <h4>Return an item</h4>
+    <form>
+        
+        Receipt ID:<br>
+        <input type="text" ng-bind="clerk.receiptId" ng-model="clerk.receiptId" >
+        <span ng-show="!clerk.receiptId.length">Please enter the receipt ID!</span>
+        <span ng-show="clerk.receiptId.length">Good!</span>
+        <br>
+        
+        UPC:<br>
+        <input type="text" ng-bind="clerk.upc" ng-model="clerk.upc">
+        <span ng-show="!clerk.upc.length">Please enter the return item ID!</span>
+        <span ng-show="clerk.upc.length">Good!</span>
+        <br>
+        
+        Quantity to return:<br>
+        <input type="number" ng-bind="clerk.quantity" ng-model="clerk.quantity">
+        <br>
+        <br><br>
+
+        <button type="button" ng-click="refund(clerk)" class="btn btn-sm btn-success">Submit</button>
+    </form>    
+</div>
+
+
+<div class="col-md-3 col-md-offset-1">
+    <table st-table="refundDisplay" st-safe-src="refundSource" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Credit Card #</th>
+            <th>Refunded</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in refundDisplay">
+            <td>{{item.cardNum}}</td>
+            <td>{{item.totalRefundMoney | currency: '$' : 2}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+</div>
+
+
+

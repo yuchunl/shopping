@@ -1,0 +1,48 @@
+<html ng-app="group08">
+<head>
+  <title>354 Group 08 Store</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-smart-table/dist/smart-table.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="appMain.js"></script>
+    <script src="managerController.js"></script>
+    <script src="shopController.js"></script>
+    <script src="clerkController.js"></script>
+    <script src="cartController.js"></script>
+    <script src="loginController.js"></script>
+    <script src="checkoutController.js"></script>
+    <script src="receiptController.js"></script>
+    <script src="appServices.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-static-top" ng-controller="indexController">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#/">Group 08 Store</a>
+    </div>
+    <div class="">
+      <ul class="nav navbar-nav">
+        <li ng-show="isLoggedIn"><a href="/#/shop">Shop</a></li>
+        <li ng-show="isLoggedIn"><a href="/#/manager">Manager</a></li>
+        <li ng-show="isLoggedIn"><a href="/#/clerk">Clerk</a></li>
+        <li ng-show="isLoggedIn"><a href="/#/cart">Cart</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <p class="navbar-text" ng-bind-html="name"></p>
+      <li ng-show="isLoggedIn"><a href="" ng-click="logoutClicked()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- the partial templates will go inside this div -->
+  <div ng-view></div>
+</body>
+
+</html>

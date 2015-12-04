@@ -1,0 +1,10 @@
+{
+    "name": "354group08",
+    "version": "0.1.0",
+    "dependencies": {
+        "mysql": "2.5.5",
+        "express": "4.12.2",
+        "squel": "3.10.0",
+        "body-parser": "1.12.2"
+    }
+}

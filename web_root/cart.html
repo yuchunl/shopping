@@ -1,0 +1,52 @@
+<!-- Shopping cart-->
+<div ng-controller="shopcart">
+	<div style="float:right; width: 50%">
+    <h3>Shopping Cart</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                    <table st-pipe="updateFromServer" st-table="shopcartList" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="clickable-shop-header" st-sort="title" st-skip-natural="true" st-sort-default='true'>Title</th>
+                            <th class="clickable-shop-header" st-sort="name" st-skip-natural="true" st-sort-default='true'>Name</th>
+                            <th class="clickable-shop-header" st-sort="category" st-skip-natural="true">category</th>
+                            <th class="clickable-shop-header" st-sort="price" st-skip-natural="true">Price</th>
+                            <th class="clickable-shop-header" st-sort="quantity" st-skip-natural="true">Quantity</th>
+                            <th class="clickable-shop-header" st-sort="total" st-skip-natural="true">Total</th>
+                            <th class="clickable-shop-header">Delete from Cart</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="cart in shopcartList">
+                            <td>{{cart.title}}</td>
+                            <td>{{cart.name}}</td>
+                            <td>{{cart.category}}</td>
+                            <td>{{cart.price}}</td>
+                            <td>{{cart.quantity * cart.price | currency}}</td>
+                            <!-- ng-bind - this gets its data from the item.quantity value, and with ng-model this updates the item.quantity value 
+                            this way the quantity is always in sync-->
+                            <td></td>
+                            <td><button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove-circle">
+                            </i>
+                            </button></td>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                            	<tr><td>{{ 'listTotal: ' + (listTotal() | currency) }}</td></tr>
+                                <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        
+
+		
+	</div>
+</div>

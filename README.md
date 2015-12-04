@@ -6,7 +6,7 @@ TABLE OF CONTENTS
 1. Introduction
 2. General Function Descriptions
 3. List of Bugs
-4. Member of team
+4. Team Members
 
 
 1. Introduction

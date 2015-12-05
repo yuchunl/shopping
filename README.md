@@ -1,7 +1,7 @@
 Simon Fraser University CMPT 354 Database System I GROUP 08
 Warehouse Web Application README
 
-# TABLE OF CONTENTS
+### TABLE OF CONTENTS
 - Introduction
 - General Function Descriptions
 - List of Bugs

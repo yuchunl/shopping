@@ -15,24 +15,24 @@ Our project is running on AngularJs and Javascript. Our user interface is implem
 
 
 # General Function Descriptions
-- Authentication:
+- **Authentication**:
 The login screen is implemented using Bootstrap. Be able to login username and password and create an account.
 By creating an account, the users need to enter their username, password, full name, address ,and phone number.
 After registeration, the users would be allow to login with the account that they just create.
 
-- Ordering system: 
+- **Ordering system**: 
 After logging in, the customers are able to seach for an item by using any combination of title, lead singer, and category, the screen would dynamically display the results.
 Clicking the Plus button after customers find out items the users like. The customers can click shopping cart in order to completing the order and make payment. 
 
-- Returning system:
+- **Returning system**:
 The return system is under the clerk section. Only clerk and manager are allow to use.
 The user be able to return products to the store by correct receipt. Clerks are able to enter receipt, UPC number, and quantity in order to make reutrn. After the returning, the screen would show up the credit number and total refund to the clerks.
 
-- Stock and Delivery:
+- **Stock and Delivery**:
 The stock and delivery are unber the manager section.
 The manager is able to update the number of stock and find the delivery time by entering the UPC number 
 
-- Sale reports:
+- **Sale reports**:
 The sale reports is under the manager section.
 the manager is able to find the daily report by section a specific date.
 

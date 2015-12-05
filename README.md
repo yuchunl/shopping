@@ -11,16 +11,13 @@ TABLE OF CONTENTS
 
 1. Introduction
 -----------------
-
-
-
+We have designed an application for music store that will assist in online shopping and warehouse managing for a general workplace. 
+It features authentication, ordering system, return system and sale reports for users to manipulate. 
+Our project is running on AngularJs and Javascript. Our user interface is implemented with Bootstrap.
 
 
 2. General Function Descriptions
 --------------------------------
-We have designed an application for music store that will assist in online shopping and warehouse managing for a general workplace. 
-It features authentication, ordering system, return system and sale reports for users to manipulate. 
-Our project is running on AngularJs and Javascript. Our user interface is implemented with Bootstrap.
 
 Authentication:
 The login screen is implemented using Bootstrap. Be able to login username and password and create an account.
